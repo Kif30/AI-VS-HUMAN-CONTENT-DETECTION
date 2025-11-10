@@ -1,0 +1,54 @@
+import type React from "react"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono, Poppins } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import "./globals.css"
+
+const _geist = Geist({ subsets: ["latin"] })
+const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+})
+
+export const metadata: Metadata = {
+  title: "AI vs Human Detector",
+  description: "Detect whether your content is human-made or AI-generated",
+  generator: "v0.app",
+  openGraph: {
+    title: "AI vs Human Detector",
+    description: "Detect whether your content is human-made or AI-generated",
+  },
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-icon.png",
+  },
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${poppins.className} antialiased`}>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  )
+}
