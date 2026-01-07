@@ -170,7 +170,7 @@ Due to GitHub size limits, trained model weights are not included.
 Request access via email:
 
 ```
-your-email@example.com
+syedakif203@gmail.com
 ```
 
 After receiving the files, create this directory:
@@ -210,3 +210,4 @@ Kashaf Fathima
 <i>Code only. Models on request. Clean by design.</i>
 </div>
 ```
+
