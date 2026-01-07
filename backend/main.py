@@ -18,6 +18,6 @@ app.add_middleware(
 )
 
 # Register Routers
-app.include_router(text_router, prefix="/detect")
-app.include_router(image_router, prefix="/detect")
-app.include_router(video_router, prefix="/detect")
+app.include_router(text_router)   # no prefix
+app.include_router(image_router)  # no prefix
+app.include_router(video_router)  # no prefix

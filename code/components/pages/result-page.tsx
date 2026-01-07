@@ -80,7 +80,7 @@ export default function ResultPage({ verdict, confidence, onAnalyzeAnother, onCo
           <div className="glass rounded-2xl p-6 border border-cyan-500/20 mb-10 hover:border-cyan-500/40 transition-all duration-300">
             <p className="text-gray-400 text-sm mb-2 font-light">Detected Model</p>
             <p className="text-white font-bold text-lg text-cyan-300">
-              {["GPT-4", "Claude", "Gemini", "Llama", "Human Generated"][Math.floor(Math.random() * 5)]}
+              {[][Math.floor(Math.random() * 5)]}
             </p>
           </div>
 

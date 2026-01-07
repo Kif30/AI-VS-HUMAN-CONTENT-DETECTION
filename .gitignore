@@ -1,0 +1,68 @@
+# ======================
+# GENERAL
+# ======================
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+
+# ======================
+# PYTHON / BACKEND
+# ======================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+venv/
+.env/
+.ipynb_checkpoints/
+
+# ML / AI
+AI-VS-HUMAN-CONTENT-DETECTION\
+backend\
+main models\
+*.pt
+*.pth
+*.onnx
+*.h5
+*.ckpt
+*.joblib
+*.pkl
+*.ckpt
+
+datasets/
+data/
+*.csv
+*.tsv
+*.zip
+*.tar
+*.tar.gz
+
+
+
+
+# ======================
+# PNPM
+# ======================
+.pnpm-store/
+
+# ======================
+# IDE
+# ======================
+.vscode/
+.idea/
+# ML / AI MODELS
+models/
+main models/
+**/main models/
+**/models/
+*.pt
+*.pth
+*.onnx
+*.ckpt
+*.h5
+*.pkl
+*.joblib

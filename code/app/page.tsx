@@ -37,19 +37,66 @@ export default function Home() {
     setCurrentPage("input")
   }
 
-  const handleAnalyze = (content: string | File) => {
+  // ✅ UPDATED: supports image + text + video
+  const handleAnalyze = async (content: string | File) => {
     setAppState({ ...appState, content })
     setCurrentPage("analyzing")
 
-    // Simulate analysis
-    setTimeout(() => {
+    try {
+      let response
+      const type = appState.contentType
+
+      if (type === "image") {
+        const formData = new FormData()
+        formData.append("file", content as File)
+
+        response = await fetch("http://127.0.0.1:8000/predict/image", {
+          method: "POST",
+          body: formData,
+        })
+      }
+
+      else if (type === "video") {
+        const formData = new FormData()
+        formData.append("file", content as File)
+
+        response = await fetch("http://127.0.0.1:8000/predict/video", {
+          method: "POST",
+          body: formData,
+        })
+      }
+
+      else if (type === "text") {
+        response = await fetch("http://127.0.0.1:8000/predict/text", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: content }),
+        })
+      }
+
+      else {
+        alert("Unsupported content type")
+        setCurrentPage("dashboard")
+        return
+      }
+
+      const result = await response.json()
+
       setAppState((prev) => ({
         ...prev,
-        verdict: Math.random() > 0.5 ? "Likely AI Generated" : "Likely Human Created",
-        confidence: Math.floor(Math.random() * 40 + 60),
+        verdict: result.label || "Unknown",
+        confidence:
+          result.confidence ??
+          Math.round(result.prob_ai * 100) ??
+          0,
       }))
+
       setCurrentPage("result")
-    }, 3500)
+    } catch (error) {
+      console.error("Prediction failed:", error)
+      alert("Error analyzing content. Try again.")
+      setCurrentPage("dashboard")
+    }
   }
 
   const handleAnalyzeAnother = () => {
@@ -66,7 +113,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen gradient-bg">
-      {/* Background animated elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-floating"></div>
         <div
@@ -79,7 +125,6 @@ export default function Home() {
         ></div>
       </div>
 
-      {/* Page content */}
       <div className="relative z-10">
         {currentPage === "login" && <LoginPage onLogin={handleLogin} />}
         {currentPage === "dashboard" && <DashboardPage onSelectContentType={handleSelectContentType} />}
