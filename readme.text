@@ -1,0 +1,152 @@
+AI vs Human Content Detection
+
+A multimodal AI system that detects whether given text, image, or video content is AI-generated or human-generated.
+
+The project is built as a full-stack application with a FastAPI backend for inference and a Next.js frontend for user interaction.
+
+✨ Features
+
+AI vs Human detection for:
+
+Text
+
+Images
+
+Videos
+
+Separate deep learning model per modality
+
+REST API–based backend
+
+Modern web frontend
+
+Clean separation of code and large model files
+
+🧠 Models Used
+Modality	Model
+Text	DeBERTa-v3
+Image	XceptionNet
+Video	XceptionNet + TCN
+
+⚠️ Trained model weights are not included in this repository.
+
+🏗️ Tech Stack
+Backend
+
+Python
+
+FastAPI
+
+PyTorch
+
+Hugging Face Transformers
+
+Frontend
+
+Next.js
+
+React
+
+TypeScript
+
+pnpm
+
+📂 Project Structure
+AI-VS-HUMAN-CONTENT-DETECTION/
+├── backend/
+|   ├── main models/
+│   ├── main.py
+│   ├── routers/
+│   └── models/        
+├── frontend/ (or code/)
+│   ├── app/
+│   ├── components/
+│   ├── package.json
+│   └── node_modules/ 
+├── .gitignore
+└── README.md
+
+▶️ How to Run the Project
+1️⃣ Backend Setup
+
+Create and activate a virtual environment:
+
+cd backend
+python -m venv venv
+
+Windows
+venv\Scripts\activate
+Linux / macOS
+source venv/bin/activate
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Run the backend:
+
+uvicorn main:app --reload
+
+
+Backend runs at:
+
+http://127.0.0.1:8000
+
+
+API documentation:
+
+http://127.0.0.1:8000/docs
+
+2️⃣ Frontend Setup
+
+Recommended Node version: Node 18 LTS
+
+cd code   
+pnpm install
+pnpm run dev
+
+
+Frontend runs at:
+
+http://localhost:3000
+
+📦 Model Files (Important)
+
+Due to GitHub file size limits, trained model weights are not included in this repository.
+
+📧 Requesting Models
+
+To obtain the trained models for testing or evaluation, please contact via email:
+
+Email: your-email@example.com
+
+You will receive:
+
+Model download links
+
+create a file backend/main models 
+
+Models must be placed inside:
+
+backend/main models/
+
+⚠️ Notes & Limitations
+
+Detection results are probabilistic, not absolute
+
+Accuracy depends on training data and content type
+
+Video detection is computationally expensive
+
+Newer generative models may reduce detection reliability
+
+🧠 Final Note
+
+This repository intentionally contains only source code.
+Large files and trained models are kept separate to maintain a clean, lightweight, and reproducible codebase.
+## 👤 Created By
+
+**Syed Akif**
+**kashaf fathima**
